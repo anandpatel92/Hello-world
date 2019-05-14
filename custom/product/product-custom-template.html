@@ -1,0 +1,66 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{#partial "page"}}
+ 
+ <div class="product-main-images">
+    {{#if product.main_image}}
+        <div class="product-image" style="background-image: url('{{{getImage product.main_image}}}');"></div>
+    {{/if}}
+ </div>
+
+<div class="product-main-desc">
+    <div class="product-mxwidth-container">
+        <div class="box-content">
+                <div class="product-heading">
+                    <h1 class="productView-title" {{#if schema}}itemprop="name"{{/if}}>{{product.title}}</h1>
+                </div>
+                {{{product.description}}}
+                {{{snippet 'product_description'}}}
+        </div>
+    </div>
+    <!--<div class="testimonial">
+        <div class="testimonial-max-width">
+            <section class="regular slider">
+                {{#each product.custom_fields}}
+                    <div>
+                        <div class="productView-info-value">{{{value}}}</div>
+                    </div>
+                {{/each}}
+            </section>
+        </div>
+    </div> -->
+    <div class="testimonial">
+        <div class="testimonial-max-width">
+            <div class="owl-carousel monial">
+                {{#each product.custom_fields}}
+                    <div>
+                        <div class="productView-info-value">{{{value}}}</div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>    
+    </div>
+    
+</div>
+<ul class="ProjectGalleryView">
+    {{#each product.images}}
+        <li class="productView-thumbnail">
+            <a
+                class="productView-thumbnail-link fancybox"
+                href="{{getImage this (cdn ../theme_settings.default_image_product)}}">
+                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage this (cdn ../theme_settings.default_image_product)}}" alt="{{this.alt}}" title="{{this.alt}}">
+            </a>
+        </li>
+    {{/each}}
+</ul>
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,22 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+
+{{#partial "page"}}
+{{#if category.image}}
+    <img class="lazyload category" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage category.image 'zoom_size'}}">
+{{/if}}
+{{{category.description}}}
+{{{snippet 'categories'}}}
+
+<div class="cateogry-product-tab">
+    category-product
+</div>
+
+
+{{/partial}}
+{{> layout/base}}

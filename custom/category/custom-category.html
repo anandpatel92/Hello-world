@@ -1,0 +1,43 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+
+{{#partial "page"}}
+{{#if category.image}}
+    <img class="lazyload category" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage category.image 'zoom_size'}}">
+{{/if}}
+{{{category.description}}}
+{{{snippet 'categories'}}}
+
+<div class="get-inspired">
+    <div class="get-inspired-max-width">
+        <div class="box-title">
+            <h2 class="get-i-stitle"></h2>
+            <h4 class="get-i-ltitle"></h4>
+        </div>
+        <div class="box-content">
+            <ul class="productGrid"></ul>
+            <div class="get-actions">
+                <a class="cms-button-actions" href="#"><span>VIEW ALL WORK</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="kitchen-collection">
+    <div class="kitchen-collection-max-width">
+        <div class="box-title">
+            <h2 class="kit-l-title"></h2>
+            <h4 class="kit-s-title"></h4>
+        </div>
+        <div class="box-content">
+            <ul class="productGrid"></ul>
+        </div>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}
